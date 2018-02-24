@@ -48,11 +48,14 @@ import java.net.URL;
 public class BuscarSoftware extends AppCompatActivity {
 
     private String URL = "http://inventario2018.herokuapp.com/api_software?user_hash=12345&action=get&";
+    private String URL1 = "http://inventario2018.herokuapp.com/api_software?user_hash=12345&action=put&nombre=Excel&no_serie=25&precio=8.0";
     private ListView lv_contacts_list;
     private ArrayAdapter adapter;
     private String queryParams = "";
     private String URL2 = "";
+    private String URL3 = "";
     private Button btn_buscar;
+    private Button btn_insertar;
     private Button btn_search;
     private EditText et_id_software;
     private TextView tv_nombre;
@@ -86,6 +89,9 @@ public class BuscarSoftware extends AppCompatActivity {
 
         btn_buscar = (Button) findViewById(R.id.btn_buscar);
         btn_buscar.setOnClickListener(onClickListener);
+
+        btn_insertar = (Button) findViewById(R.id.btn_insertar);
+        btn_insertar.setOnClickListener(onClickListener);
     }
 
     private View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -108,6 +114,25 @@ public class BuscarSoftware extends AppCompatActivity {
         webServiceRest(URL2);
     }
 
+    private View.OnClickListener onClickListener1 = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (v == btn_insertar)
+                btn_buscar_onClick();
+        }
+    };
+
+    private void btn_insertar_onClick() {
+        String id_software= et_id_software.getText().toString();
+
+        Uri.Builder builder = new Uri.Builder();
+        builder.appendQueryParameter("id_software",id_software);
+        String queryParams = builder.build().getEncodedQuery();
+        URL3=URL1;
+        URL3+=queryParams;
+        Log.d("mensaje", URL3);
+        webServiceRest(URL3);
+    }
 
 
     private void webServiceRest(String requestURL) {

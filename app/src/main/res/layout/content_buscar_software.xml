@@ -61,22 +61,18 @@
         android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_insertar"
+        android:text="Insertar"
+        android:textColor="@color/colorPrimary"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Insertar" />
+        android:layout_height="wrap_content"/>
 
     <Button
         android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Eliminaf" />
+        android:text="Eliminar" />
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Editar" />
 
 </LinearLayout>
 
